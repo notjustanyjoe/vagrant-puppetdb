@@ -1,0 +1,25 @@
+---
+- hosts: puppetserver
+  become: true
+  connection: local
+
+  roles:
+    - role: geerlingguy.puppet
+  tasks:
+    - name: change puppetserver ram needed for testing
+      lineinfile:
+        path: /etc/sysconfig/puppetserver
+        regexp: '^JAVA_ARGS="-Xms2g -Xmx2g'
+        line: 'JAVA_ARGS="-Xms1g -Xmx1g -Djruby.logger.class=com.puppetlabs.jruby_utils.jruby.Slf4jLogger"'
+      notify: puppetService
+    - name: Add Autosign to puppetserver
+      copy:
+        content: '*.local'
+        dest: /etc/puppetlabs/puppet/autosign.conf
+      notify: puppetService
+  handlers:
+    - name: puppetService
+      service:
+        name: puppetserver
+        state: restarted
+        enabled: yes

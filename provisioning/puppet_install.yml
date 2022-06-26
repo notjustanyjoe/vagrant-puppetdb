@@ -1,0 +1,7 @@
+---
+- hosts: workstation.local
+  become: true
+  connection: local
+  roles:
+    - role: geerlingguy.puppet
+

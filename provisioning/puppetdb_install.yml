@@ -1,0 +1,7 @@
+---
+- hosts: puppetdb.local
+  become: true
+  connection: local
+  roles:
+    - role: geerlingguy.puppet
+    - role: geerlingguy.docker

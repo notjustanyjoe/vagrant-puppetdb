@@ -1,0 +1,16 @@
+[puppetserver]
+puppet.local ansible_user=vagrant ansible_ssh_pass=vagrant
+
+[nodes]
+puppetdb.local
+workstation.local
+#nodes{1:3}
+
+[nodes:vars]
+puppet_package=puppet
+puppet_service=puppet
+puppet_service_state=started
+puppet_service_enabled=true
+puppet_service_manage=true
+ansible_user=vagrant
+ansible_ssh_pass=vagrant 
