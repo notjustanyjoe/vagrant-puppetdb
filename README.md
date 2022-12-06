@@ -5,7 +5,10 @@ Vagrant config for testing 3 node setup for puppet/puppetdb/workstation.
 ## Set Up
 
 Install Vagrant
+Install Vagrant-Hosts plugin
+`vagrant plugin install vagrant-hosts`
 Install Virtualbox
+
 
 ## Usage
 
