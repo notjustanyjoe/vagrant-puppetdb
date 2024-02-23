@@ -4,4 +4,23 @@
   connection: local
   roles:
     - role: geerlingguy.puppet
+      vars:
+        puppet_package: puppet-agent
     - role: geerlingguy.docker
+  tasks:
+    - name: Add Postgresql 12 gpg key
+      ansible.builtin.rpm_key:
+        state: present
+        key: https://apt.postgresql.org/pub/repos/yum/keys/PGDG-RPM-GPG-KEY-RHEL
+    - name: Add Postgresql 12 repo
+      ansible.builtin.dnf:
+        name: 'https://download.postgresql.org/pub/repos/yum/reporpms/EL-8-x86_64/pgdg-redhat-repo-latest.noarch.rpm'
+        state: installed
+    - name: Disable Postgresql DNF Module
+      ansible.builtin.command:
+        cmd: '/bin/dnf -qy module disable postgresql'
+    - name: Ensure Packages are up to date
+      ansible.builtin.dnf:
+        name: '*'
+        state: latest
+        exclude: kernel*

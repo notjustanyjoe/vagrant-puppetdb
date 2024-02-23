@@ -4,4 +4,9 @@
   connection: local
   roles:
     - role: geerlingguy.puppet
-
+  tasks:
+    - name: Ensure Packages are up to date
+      yum:
+        name: '*'
+        state: latest
+        exclude: kernel*

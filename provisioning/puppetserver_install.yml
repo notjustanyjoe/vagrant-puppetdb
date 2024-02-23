@@ -17,6 +17,11 @@
         content: '*.local'
         dest: /etc/puppetlabs/puppet/autosign.conf
       notify: puppetService
+    - name: Ensure Packages are up to date
+      yum:
+        name: '*'
+        state: latest
+        exclude: kernel*
   handlers:
     - name: puppetService
       service:

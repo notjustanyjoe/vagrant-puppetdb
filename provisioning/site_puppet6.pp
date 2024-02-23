@@ -1,7 +1,7 @@
 node 'puppetdb.local' {
   class { 'puppetdb':
     manage_package_repo => false,
-    postgres_version => '12',
+    postgres_version => '9.6',
     manage_firewall  => false,
     listen_address   => '0.0.0.0',
     ssl_listen_port  => '8082'
