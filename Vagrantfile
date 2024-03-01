@@ -7,7 +7,7 @@ Vagrant.configure("2") do |config|
   config.vm.define "puppet" do |puppet|
     puppet.vm.box = "bento/rockylinux-8"
     puppet.vm.hostname = "puppet.local"
-    puppet.vm.network :private_network, ip: "192.169.56.10"
+    puppet.vm.network :private_network, ip: "192.168.56..10"
     puppet.vm.provider "virtualbox" do |v|
       v.memory = 2048
     end 
@@ -26,7 +26,7 @@ Vagrant.configure("2") do |config|
   config.vm.define "puppetdb" do |puppetdb|
     puppetdb.vm.box = "bento/rockylinux-8"
     puppetdb.vm.hostname = "puppetdb.local"
-    puppetdb.vm.network :private_network, ip: "192.169.56.11"
+    puppetdb.vm.network :private_network, ip: "192.168.56..11"
     puppetdb.vm.network :forwarded_port, guest: 8088, host: 8088
     puppetdb.vm.provision :ansible_local do |ansible|
       ansible.galaxy_role_file = "provisioning/requirements.yml"
@@ -45,7 +45,7 @@ Vagrant.configure("2") do |config|
   config.vm.define "workstation" do |workstation|
     workstation.vm.box = "bento/rockylinux-8"
     workstation.vm.hostname = "workstation.local"
-    workstation.vm.network :private_network, ip: "192.169.56.12"
+    workstation.vm.network :private_network, ip: "192.168.56..12"
     workstation.vm.provision :ansible_local do |ansible|
       ansible.galaxy_role_file = "provisioning/requirements.yml"
       ansible.playbook = "provisioning/puppet_install.yml"
