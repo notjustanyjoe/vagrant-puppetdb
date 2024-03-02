@@ -16,6 +16,7 @@ node 'puppetdb.local' {
       'PUPPETDB_HOST=127.0.0.1',
       'PUPPETDB_PORT=8080',
       'PUPPETBOARD_PORT=8088',
+      'SECRET_KEY=de5c58816a25f9959330b752671ac6cc9d24ab43b969a1f06e7c25dc2d1f42ae',
     ],
     net   => 'host',
   }

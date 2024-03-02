@@ -1,2 +1,2 @@
 *.vagrant*
-*provisioning/roles*
+*provisioning/roles/geerlingguy*
